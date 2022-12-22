@@ -1,20 +1,24 @@
 ﻿using System.Diagnostics;
+using Tool_Manager.Model;
 using Timer = System.Windows.Forms.Timer;
 
 namespace Tool_Manager.Core
 {
     internal class ProcessMonitor
     {
+        private static IDictionary<string, List<Tool>> Apps = new Dictionary<string, List<Tool>>();
+
         private static List<Tool> Tools { get; set; } = new List<Tool>();
 
         private static readonly Timer _timer = new();
-        //private static readonly string _appPath = @"C:\Program Files (x86)\Steam\steamapps\common\Assetto Corsa Competizione\acc.exe";
-        //private static readonly string _appPath = @"C:\Windows\system32\notepad.exe";
-        private static readonly string _appPath = @"C:\Program Files (x86)\Steam\steamapps\common\Assetto Corsa Competizione\AC2\Binaries\Win64\AC2-Win64-Shipping.exe";
+        private static readonly string _defaultAppPath = @"C:\Program Files (x86)\Steam\steamapps\common\Assetto Corsa Competizione\AC2\Binaries\Win64\AC2-Win64-Shipping.exe";
+
+        private static string AppPath = "";
 
         internal class Tool
         {
             public int DelayedStart { get; set; } = 0;
+            public int DelayedStop { get; set; } = 0;
             public Process Process { get; set; }
         }
 
@@ -40,25 +44,29 @@ namespace Tool_Manager.Core
 
         private static void Init()
         {
-            Tool tool = new Tool();
-            Process proc = new Process();
-            proc.StartInfo.FileName = @"C:\Users\igneo\AppData\Local\racelabapps\RacelabApps.exe";
-            tool.Process = proc;
-            Tools.Add(tool);
+            Tools = new List<Tool>();
+            
+            AppPath = Properties.Settings.Default.appPath;
 
-            tool = new Tool();
-            proc = new Process();
-            proc.StartInfo.FileName = @"C:\Users\igneo\Documents\SRWE_236\SRWE.exe";
-            proc.StartInfo.Arguments = @"--attach=AC2-Win64-Shipping --profile=C:\Users\igneo\Documents\SRWE_236\acc.xml";
-            tool.DelayedStart = 7000;
-            tool.Process = proc;
-            Tools.Add(tool);
+            if (AppPath == null)
+                AppPath = _defaultAppPath;
 
-            tool = new Tool();
-            proc = new Process();
-            proc.StartInfo.FileName = @"C:\Program Files (x86)\Fanatec\FanaLab\Control\FanaLab.exe";
-            tool.Process = proc;
-            Tools.Add(tool);
+            AppTools appTools = Properties.Settings.Default.apps;
+
+            if (appTools != null)
+            {
+                foreach (AppTool appTool in appTools)
+                {
+                    Tool tool = new ();
+                    Process proc = new ();
+                    proc.StartInfo.FileName = appTool.Path;
+                    proc.StartInfo.Arguments = appTool.Arguments;
+                    tool.DelayedStart = appTool.DelayedStart;
+                    tool.DelayedStop = appTool.DelayedStop;
+                    tool.Process = proc;
+                    Tools.Add(tool);
+                }
+            }
         }
 
         private static void MonitorForExit(Process process)
@@ -92,8 +100,8 @@ namespace Tool_Manager.Core
 
         private static void Tick(object? sender, EventArgs? e)
         {
-            using Process? proc = (from p in Process.GetProcessesByName(ExtractProcessNameFromPath(_appPath))
-                                   where p.MainModule?.FileName == _appPath
+            using Process? proc = (from p in Process.GetProcessesByName(ExtractProcessNameFromPath(AppPath))
+                                   where p.MainModule?.FileName == AppPath
                                    select p).FirstOrDefault();
             {
                 if (proc != null)

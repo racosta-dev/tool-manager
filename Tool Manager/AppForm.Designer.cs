@@ -35,6 +35,7 @@
             this.runAtStartup = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.buttonAbout = new System.Windows.Forms.Button();
             this.buttonSettings = new System.Windows.Forms.Button();
             this.buttonApps = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
@@ -51,7 +52,7 @@
             // 
             this.notifyIcon.ContextMenuStrip = this.contextMenuStrip;
             this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
-            this.notifyIcon.Text = "ACC Manager";
+            this.notifyIcon.Text = "Tool Manager";
             this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.NotifyIcon_MouseDoubleClick);
             // 
             // contextMenuStrip
@@ -82,14 +83,33 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.panelMenu.Controls.Add(this.buttonAbout);
             this.panelMenu.Controls.Add(this.buttonSettings);
             this.panelMenu.Controls.Add(this.buttonApps);
             this.panelMenu.Controls.Add(this.panelLogo);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(200, 511);
+            this.panelMenu.Size = new System.Drawing.Size(200, 581);
             this.panelMenu.TabIndex = 1;
+            // 
+            // buttonAbout
+            // 
+            this.buttonAbout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.buttonAbout.Dock = System.Windows.Forms.DockStyle.Top;
+            this.buttonAbout.FlatAppearance.BorderSize = 0;
+            this.buttonAbout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAbout.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonAbout.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonAbout.Location = new System.Drawing.Point(0, 195);
+            this.buttonAbout.Name = "buttonAbout";
+            this.buttonAbout.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.buttonAbout.Size = new System.Drawing.Size(200, 60);
+            this.buttonAbout.TabIndex = 3;
+            this.buttonAbout.Text = "About";
+            this.buttonAbout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonAbout.UseVisualStyleBackColor = false;
+            this.buttonAbout.Click += new System.EventHandler(this.buttonAbout_Click);
             // 
             // buttonSettings
             // 
@@ -145,16 +165,17 @@
             this.labelTitle.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.labelTitle.Location = new System.Drawing.Point(66, 22);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(131, 28);
+            this.labelTitle.Size = new System.Drawing.Size(132, 28);
             this.labelTitle.TabIndex = 1;
-            this.labelTitle.Text = "ACC Manager";
+            this.labelTitle.Text = "Tool Manager";
             // 
             // logo
             // 
-            this.logo.Image = global::Tool_Manager.Properties.Resources.accmanager;
+            this.logo.Image = ((System.Drawing.Image)(resources.GetObject("logo.Image")));
             this.logo.Location = new System.Drawing.Point(12, 12);
             this.logo.Name = "logo";
             this.logo.Size = new System.Drawing.Size(48, 48);
+            this.logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.logo.TabIndex = 0;
             this.logo.TabStop = false;
             // 
@@ -163,21 +184,21 @@
             this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContent.Location = new System.Drawing.Point(200, 0);
             this.panelContent.Name = "panelContent";
-            this.panelContent.Size = new System.Drawing.Size(524, 511);
+            this.panelContent.Size = new System.Drawing.Size(784, 581);
             this.panelContent.TabIndex = 2;
             // 
             // AppForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(724, 511);
+            this.ClientSize = new System.Drawing.Size(984, 581);
             this.Controls.Add(this.panelContent);
             this.Controls.Add(this.panelMenu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(740, 550);
+            this.MinimumSize = new System.Drawing.Size(640, 480);
             this.Name = "AppForm";
             this.ShowInTaskbar = false;
-            this.Text = "ACC Manager";
+            this.Text = "Tool Manager";
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AppForm_FormClosing);
             this.Load += new System.EventHandler(this.AppForm_Load);
@@ -201,8 +222,9 @@
         private Panel panelLogo;
         private Button buttonApps;
         private Button buttonSettings;
-        private PictureBox logo;
         private Label labelTitle;
         private Panel panelContent;
+        private Button buttonAbout;
+        private PictureBox logo;
     }
 }

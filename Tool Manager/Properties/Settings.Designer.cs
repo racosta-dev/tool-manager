@@ -71,5 +71,19 @@ namespace Tool_Manager.Properties {
                 this["apps"] = value;
             }
         }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public string appPath
+        {
+            get
+            {
+                return ((string)(this["appPath"]));
+            }
+            set
+            {
+                this["appPath"] = value;
+            }
+        }
     }
 }

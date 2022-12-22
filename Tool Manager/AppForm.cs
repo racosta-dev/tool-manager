@@ -12,6 +12,7 @@ namespace Tool_Manager
             InitializeComponent();
             SetRunAtStartupCheckedState(runAtStartup, EventArgs.Empty);
             ActivateButton(this.buttonApps);
+            OpenChildForm(new Forms.FormApplications(), buttonApps);
         }
 
         private void AppForm_Load(object sender, EventArgs e)
@@ -110,6 +111,11 @@ namespace Tool_Manager
         private void buttonSettings_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Forms.FormSettings(), sender);
+        }
+
+        private void buttonAbout_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Forms.FormAbout(), sender);
         }
 
         private void OpenChildForm(Form childForm, object sender)

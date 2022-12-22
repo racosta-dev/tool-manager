@@ -18,6 +18,7 @@ namespace Tool_Manager.Model
         public string Path { get; set; }
         public string Arguments { get; set; }
         public int DelayedStart { get; set; }
+        public int DelayedStop { get; set; }
 
     }
 }

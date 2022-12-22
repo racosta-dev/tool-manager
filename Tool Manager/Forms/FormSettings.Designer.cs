@@ -51,7 +51,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(10);
-            this.panel1.Size = new System.Drawing.Size(800, 450);
+            this.panel1.Size = new System.Drawing.Size(763, 479);
             this.panel1.TabIndex = 0;
             // 
             // cbStartMinimized
@@ -69,9 +69,9 @@
             // 
             this.panel2.Controls.Add(this.tableLayoutPanel1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(10, 390);
+            this.panel2.Location = new System.Drawing.Point(10, 419);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(780, 50);
+            this.panel2.Size = new System.Drawing.Size(743, 50);
             this.panel2.TabIndex = 6;
             // 
             // tableLayoutPanel1
@@ -82,19 +82,20 @@
             this.tableLayoutPanel1.Controls.Add(this.btnSave, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnDiscard, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(369, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(443, 0);
+            this.tableLayoutPanel1.MaximumSize = new System.Drawing.Size(360, 50);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(411, 50);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(300, 50);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // btnSave
             // 
             this.btnSave.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSave.Location = new System.Drawing.Point(208, 3);
+            this.btnSave.Location = new System.Drawing.Point(153, 3);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(200, 44);
+            this.btnSave.Size = new System.Drawing.Size(144, 44);
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -105,7 +106,7 @@
             this.btnDiscard.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnDiscard.Location = new System.Drawing.Point(3, 3);
             this.btnDiscard.Name = "btnDiscard";
-            this.btnDiscard.Size = new System.Drawing.Size(199, 44);
+            this.btnDiscard.Size = new System.Drawing.Size(144, 44);
             this.btnDiscard.TabIndex = 1;
             this.btnDiscard.Text = "Discard";
             this.btnDiscard.UseVisualStyleBackColor = true;
@@ -137,7 +138,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(763, 479);
             this.Controls.Add(this.panel1);
             this.Name = "FormSettings";
             this.Text = "FormSettings";
